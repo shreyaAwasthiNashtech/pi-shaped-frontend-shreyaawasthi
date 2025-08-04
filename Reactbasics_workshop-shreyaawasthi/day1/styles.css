@@ -1,0 +1,332 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #f7f6fd;
+  color: #18113c;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: #f7f6fd;
+  transition: background 0.3s, color 0.3s;
+}
+
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  object-fit: cover;
+  box-shadow: 0 2px 16px rgba(144,60,255,0.15);
+  margin-top: 44px;
+}
+
+.hero-name {
+  color: #18113c;
+  margin: 13px 0 6px 0;
+  font-size: 2.7rem;
+  letter-spacing: 1.5px;
+}
+
+.hero-title {
+  margin-bottom: 17px;
+  font-size: 1.16rem;
+  color: #903cff;
+}
+
+.hero-nav {
+  display: flex;
+  gap: 22px;
+  margin-top: 7px;
+}
+
+.hero-link, #toggleMode {
+  padding: 12px 22px;
+  border-radius: 38px;
+  border: none;
+  background: #ece4fe;
+  color: #5a31b9;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+}
+.hero-link:hover, #toggleMode:hover {
+  background: #903cff;
+  color: #fff;
+}
+
+#toggleMode {
+  background: #faf1ed;
+  color: #c07233;
+}
+
+/* Modal for About */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(42,42,60, 0.33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.modal-content {
+  background: #fff;
+  color: #18113c;
+  border-radius: 10px;
+  max-width: 440px;
+  padding: 30px 35px;
+  box-shadow: 0 8px 38px #0002;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 11px;
+  right: 17px;
+  font-size: 1.3rem;
+  color: #6347ad;
+  cursor: pointer;
+}
+
+/* Section styling */
+.section-style {
+  margin: 0 auto 250px auto;
+  padding: 64px 40px;
+  max-width: 700px;
+  min-height: 220px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 40px #903cff22;
+  width: 100%;
+}
+
+/* Projects grid and cards */
+#project-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 24px;
+}
+.project-card {
+  background: #f3eeff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px #e0caff55;
+  padding: 28px 24px;
+  transition: transform 0.21s;
+}
+.project-card:hover {
+  transform: scale(1.025) translateY(-3px);
+}
+.project-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #5a31b9;
+  margin-bottom: 9px;
+}
+.project-desc {
+  color: #232323;
+  font-size: 1rem;
+}
+.project-link {
+  margin-top: 11px;
+  display: inline-block;
+  color: #903cff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: #fff;
+  border-radius: 7px;
+  padding: 7px 15px;
+  text-decoration: none;
+  transition: background .19s, color .19s;
+  box-shadow: 0 1px 9px #903cff0c;
+}
+.project-link:hover {
+  background: #903cff;
+  color: #fff;
+}
+
+/* Responsive grid for projects */
+@media (min-width: 650px) {
+  #project-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .hero-name { font-size: 2rem; }
+  .profile-pic { width: 130px; height: 130px; }
+  .section-style, .modal-content { padding: 16px 7vw; }
+  .hero-nav { gap: 8px; }
+}
+
+.hidden { display: none !important; }
+
+body.night-mode {
+  background: #191731;
+  color: #fff;
+}
+body.night-mode .hero {
+  background: #191731;
+}
+body.night-mode .hero-name {
+  color: #fff;
+}
+body.night-mode .hero-nav .hero-link {
+  background: #2d2355;
+  color: #cbb7fc;
+}
+body.night-mode .section-style,
+body.night-mode .modal-content {
+  background: #191739;
+  color: #fff;
+}
+
+#projects {
+  margin-top: 200px;  
+}
+
+/* Contact Section Styling */
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 18px 22px;
+  font-size: 1.2rem;
+  border: 2px solid #903cff;
+  border-radius: 12px;
+  background: #fafaff;
+  color: #2a1a6e;
+  font-weight: 500;
+  box-shadow: inset 1px 1px 6px #d7cfff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  resize: vertical;
+  min-height: 48px;
+}
+
+#contact textarea {
+  min-height: 110px;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #6611cc;
+  box-shadow: 0 0 8px #9c49ffaa;
+  background: #fff;
+  color: #3f2167;
+}
+
+#contact button[type="submit"] {
+  width: fit-content;
+  align-self: center;
+  padding: 14px 36px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #903cff 0%, #6611cc 100%);
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px #903cffaa;
+  transition: background 0.35s ease, transform 0.2s ease;
+}
+
+#contact button[type="submit"]:hover {
+  background: linear-gradient(135deg, #6611cc 0%, #903cff 100%);
+  transform: scale(1.06);
+}
+
+#formMessage {
+  margin-top: 12px;
+  min-height: 22px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-align: center;
+  color: #6611cc;
+  letter-spacing: 0.01em;
+}
+
+/* Experience Section Styling */
+#experience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+}
+
+#experience h2 {
+  margin-bottom: 12px;
+}
+
+#startYear {
+  width: 290px;
+  padding: 18px 22px;
+  font-size: 1.25rem;
+  border: 2px solid #903cff;
+  border-radius: 12px;
+  background: #fafaff;
+  color: #2a1a6e;
+  font-weight: 500;
+  box-shadow: inset 1px 1px 6px #d7cfff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  margin-bottom: 18px;
+}
+
+#startYear:focus {
+  border-color: #6611cc;
+  box-shadow: 0 0 8px #9c49ffaa;
+  background: #fff;
+  color: #3f2167;
+}
+
+#calcExpBtn {
+  padding: 14px 34px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #903cff 0%, #6611cc 100%);
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px #903cff99;
+  transition: background 0.35s, transform 0.2s;
+}
+
+#calcExpBtn:hover {
+  background: linear-gradient(135deg, #6611cc 0%, #903cff 100%);
+  transform: scale(1.06);
+}
+
+#expResult {
+  margin-top: 16px;
+  min-height: 24px;
+  font-size: 1.12rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+

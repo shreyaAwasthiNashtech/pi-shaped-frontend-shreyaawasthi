@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreya Awasthi | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="main-content">
+    <section class="hero">
+      <img src="https://image.freepik.com/free-vector/woman-profile-cartoon_18591-58480.jpg"
+           alt="Profile" class="profile-pic" />
+      <h1 class="hero-name">Shreya Awasthi</h1>
+      <p class="hero-title">Automation Consultant | Spring Boot | Microservices | QA</p>
+      <nav class="hero-nav">
+        <button class="hero-link" id="about-btn">About</button>
+        <a class="hero-link" href="#projects">Projects</a>
+        <a class="hero-link" href="#contact">Contact Me</a>
+        <a class="hero-link" href="#experience">Calculate Experience</a>
+        <button id="toggleMode" aria-label="Toggle mode">☀️</button>
+      </nav>
+    </section>
+
+    <section id="about-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn" id="close-about">&times;</span>
+        <h2>About Me</h2>
+        <p>
+          Hi, I am Shreya Awasthi, an Automation Consultant with expertise in modern testing frameworks,
+          Spring Boot projects, and microservices. Passionate about quality, performance, and building efficient systems.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" class="section-style">
+      <h2>Projects</h2>
+      <div id="project-list"></div>
+    </section>
+    <section id="contact" class="section-style">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" placeholder="Your Message" rows="4"></textarea>
+        <button type="submit">Send</button>
+        <p id="formMessage"></p>
+      </form>
+    </section>
+    <section id="experience" class="section-style">
+      <h2>Calculate Your Coding Experience</h2>
+      <input type="number" id="startYear" placeholder="Enter your coding start year" min="1980" max="2025"/>
+      <button id="calcExpBtn" type="button">Calculate Experience</button>
+      <p id="expResult"></p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
