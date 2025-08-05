@@ -1,0 +1,58 @@
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(144, 60, 255, 0.15);
+  padding: 24px 28px;
+  max-width: 360px;
+  min-width: 270px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.017);
+  box-shadow: 0 14px 48px rgba(144, 60, 255, 0.3);
+}
+
+.title {
+  margin: 0 0 14px 0;
+  color: #525558ff;
+  font-weight: 700;
+  font-size: 1.6rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.info {
+  margin: 6px 0;
+  color: #40356f;
+  font-size: 1rem;
+}
+
+.button {
+  margin-top: 18px;
+  padding: 10px 22px;
+  background-color: #903cff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.button:hover {
+  background-color: #6611cc;
+  transform: scale(1.04);
+}
+
+.bio {
+  background-color: #f7f1ff;
+  padding: 14px 18px;
+  margin-top: 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #3f2167;
+  line-height: 1.4;
+  box-shadow: 0 2px 16px #ccc1;
+}
