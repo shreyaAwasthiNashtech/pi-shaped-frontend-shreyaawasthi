@@ -1,23 +1,22 @@
 Mini Profile Card App
-Overview
-This is a small React application built using TypeScript to show profile cards. Each card displays a person's name, age, and email address. There's also a button that reveals the person's bio when clicked. This project helps practise using React components, props, state, event handling, and TypeScript to ensure the code is typed and safe.
+Introduction
+This project is a small React application designed to display profile cards for different people. Each card shows basic details like name, age, and email. You can also toggle a short biography for each person using a button. The app is built using React with TypeScript to ensure type safety and better code quality.
 
 Features
-Reusable ProfileCard component that takes name, age, and email as props.
+ProfileCard component:
+Reusable card that accepts several properties (name, age, email) and shows them clearly.
 
-Displays a button labelled Show Bio that toggles the display of a short biography.
+Toggle Biography:
+Each card has a “Show Bio” button that reveals or hides a short biography or description.
 
-The bio is passed as children to the component, making it flexible.
+TypeScript support:
+All props and state are strictly typed to avoid errors and make the code easier to maintain.
 
-Uses React’s useState hook to manage the toggle state of the bio.
+Simple, clean design:
+The cards are styled with soft colours, shadows, and rounded corners for a pleasant look.
 
-TypeScript provides clear and strict typing for props and event handlers.
-
-Simple yet effective styling using CSS Modules for clean, modular CSS.
-
-Responsive layout that looks good on both small and large screens.
-
-Accessibility considerations, such as proper ARIA attributes on the toggle button.
+Responsive layout:
+Cards arrange nicely on different screen sizes and devices.
 
 File Structure
 text
@@ -32,6 +31,16 @@ react-profile-app/
 ├── tsconfig.json
 ├── README.md
 └── node_modules/
+
+Technologies Used
+React: For building user interfaces with reusable components
+
+TypeScript: Adds static typing on top of JavaScript, helping catch errors early
+
+CSS Modules: For locally scoped, clean CSS styles applied to components
+
+Vite or Create React App: Project scaffolding tools to quickly start development with React + TypeScript
+
 How to Run
 Make sure you have Node.js installed on your computer.
 
