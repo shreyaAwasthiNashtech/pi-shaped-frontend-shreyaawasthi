@@ -1,69 +1,100 @@
-# React + TypeScript + Vite
+# React Hooks & Context Mini App (Day 3)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Introduction**
+This project is a small, practical React app built using TypeScript that helps me explore some important React hooks, context API, and TypeScript generics. The aim was to learn how to write clean, efficient, and type-safe React code, while creating interactive and user-friendly features.
 
-Currently, two official plugins are available:
+It's designed to be easy for beginners to follow along and understand how different React concepts work together in real projects.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**What’s Included in This Project?**
+The app is split into several parts, each focusing on a set of concepts:
 
-## Expanding the ESLint configuration
+**1. Counter & Timer**
+- Counter: A simple counter that you can increase, decrease, or reset.
+  The number changes colour based on whether it’s positive, negative, or zero, making it visually clear what the current state is.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Timer: A timer that starts automatically and counts seconds up.
+  You can start or stop the timer with a toggle button.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+These components use the React Hook useState to manage their state, and useEffect in the Timer to handle side effects like starting and clearing intervals.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**2. useRef & useMemo**
+- _InputFocus:_ This component has an input box and a button. Clicking the button sets the focus on the input field.
+  Here, I used useRef to directly interact with the DOM element (the input), which is something React normally abstracts away from.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- ExpensiveCalc: This component calculates the factorial of a number using a deliberately slow loop to simulate a heavy computation.
+  To avoid slowing down the UI every time the component renders, this calculation is wrapped in useMemo.
+  This hook makes sure the calculation only runs when the input number changes, but not when other parts of the component update.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+  This makes the app more performant by remember("memoising") the costly result.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**3. useCallback & Memoised Child**
+Here, I created a parent component with a list of items and a child component that displays the list and allows adding new items.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The function to add an item is wrapped in useCallback so it doesn’t change unnecessarily, which helps the child component avoid unwanted re-renders.
+
+The child component is wrapped with React.memo to only rerender when its inputs really change.
+
+This combination teaches how to optimise performance by preventing re-renders.
+
+**4. Context API with Theme Switching**
+I built a simple theme context to switch between light and dark themes.
+
+Using React's createContext, useContext and useState, the app lets users pick a theme from a dropdown.
+
+The whole app responds immediately by changing background and text colours accordingly.
+
+This shows how React Context enables sharing global state in an app without cumbersome prop drilling.
+
+**5. TypeScript Generics and Utility Types**
+The project includes a generic dropdown component that can handle any kind of options, thanks to TypeScript generics.
+
+It accepts options and handlers that are strongly typed, allowing safe reuse for different purposes.
+
+For example, the theme dropdown uses string union types ('light' | 'dark'), while the user role dropdown uses more complex types defined in the types folder.
+
+**What React Hooks Were Used and Why?**
+- _useState_: To hold and update component state like counters, selected items, or timer seconds.
+
+- _useEffect_: To manage side effects, specifically starting and cleaning up the timer interval automatically.
+
+- _useRef_: To grab a reference to the input element and give it programmatic focus when requested.
+
+- _useMemo_: To memoise expensive calculations so they only run when their inputs change, making the UI buttery smooth.
+
+- _useCallback_: To memoise functions passed down as props, helping avoid unnecessary renders.
+
+- _useContext (with createContext)_: To share the current theme and theme toggling function easily among all components.
+
+**How Generics and Utility Types Were Applied**
+The Dropdown component uses a generic type parameter to accept option values of any type while keeping type safety intact.
+
+_For example:_
+
+The theme dropdown uses generic type 'light' | 'dark'.
+
+The user role dropdown uses a custom type UserRole (a union of string literals like "Admin" | "User" | "Guest").
+
+This flexibility means the dropdown can be reused anywhere in the app with confidence about the types.
+
+**Project Structure**
+src/
+├── components/      # All React components (Counter, Timer, InputFocus, etc.)
+├── context/         # The ThemeContext and provider
+├── types/           # Shared TypeScript types like UserRole, RoleOption
+├── utils/           # Utility functions (e.g., slow factorial)
+├── App.tsx          # Main app component combining everything
+├── index.tsx        # React app entry point
+
+**How to Run the App**
+Run npm install to install dependencies.
+
+Start the development server with npm run dev (Vite) or npm start (CRA).
+
+Open your browser at http://localhost:3000.
+
+Try switching themes from the dropdown and see the whole app update colours smoothly. Play with the counter, timer, focus input, and dropdowns side-by-side inside neat boxes!
+
+**Final Thoughts**
+This project was an excellent chance to solidify understanding of React hooks in a practical way, improve typing with TypeScript, and practise code organisation.
+
+It shows how hooks make managing state and side effects easier, how context can elegantly handle global settings, and how generics improve component reusability.
